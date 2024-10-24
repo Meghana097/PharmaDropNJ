@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Ship It - Medical Disposal NJ{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <img src="{{ url_for('static', filename='campaign-image.jpg') }}" alt="Campaign Image" class="campaign-image">
+</div>
+
+<h1>Ship Your Medications</h1>
+<h2>Generate a Shipping Label</h2>
+<p>To ensure safe disposal, please enter your name and address to generate your shipping label.</p>
+
+<div>
+    <label for="name">Name <span style="color: red;">*</span>:</label>
+    <input type="text" id="name" required style="margin-bottom: 15px;">
+    
+    <label for="address">Address <span style="color: red;">*</span>:</label>
+    <input type="text" id="address" required style="margin-bottom: 15px;">
+    
+    <label for="city">City:</label>
+    <input type="text" id="city" style="margin-bottom: 15px;">
+    
+    <label for="state">State:</label>
+    <input type="text" id="state" value="NJ" readonly style="margin-bottom: 15px;">
+    
+    <label for="zip">ZIP Code:</label>
+    <input type="text" id="zip" style="margin-bottom: 15px;">
+    
+    <button id="generate-label">Generate Label</button>
+</div>
+
+<div id="shipping-label" style="border: 1px solid #000; padding: 20px; width: 4in; height: 6in; font-family: Arial, sans-serif; display: none;">
+    <h2 style="text-align: center;">USPS Shipping Label</h2>
+    <div style="margin-bottom: 20px;">
+        <strong>From:</strong><br>
+        <span id="sender-name"></span><br>
+        <span id="sender-address"></span><br>
+        <span id="sender-city-state-zip"></span>
+    </div>
+    <div style="margin-bottom: 20px;">
+        <strong>To:</strong><br>
+        <span id="recipient-name"></span><br>
+        <span id="recipient-address"></span><br>
+        <span id="recipient-city-state-zip"></span>
+    </div>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <strong>Tracking Number:</strong> <span id="tracking-number" style="font-size: 20px; font-weight: bold;">1234567890</span>
+    </div>
+    <div style="text-align: center;">
+        <img id="barcode" alt="Barcode" style="width: 100%; height: auto;"/>
+    </div>
+</div>
+
+<button id="print-label" style="display: none;">Print Label</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
+<script>
+    async function getClosestLocation() {
+        return {
+            name: "Absecon Police Department",
+            address: "500 Mill Road",
+            city: "Absecon",
+            state: "NJ",
+            zip: "08201",
+            trackingNumber: "1234567890"
+        };
+    }
+
+    async function generateLabel() {
+        const name = document.getElementById('name').value;
+        const address = document.getElementById('address').value;
+
+        if (!name || !address) {
+            alert("Please fill in the mandatory fields: Name and Address.");
+            return;
+        }
+
+        const closestLocation = await getClosestLocation();
+        
+        document.getElementById('sender-name').innerText = name;
+        document.getElementById('sender-address').innerText = address;
+        document.getElementById('sender-city-state-zip').innerText = `${document.getElementById('city').value}, ${document.getElementById('state').value} ${document.getElementById('zip').value}`;
+        
+        document.getElementById('recipient-name').innerText = closestLocation.name;
+        document.getElementById('recipient-address').innerText = closestLocation.address;
+        document.getElementById('recipient-city-state-zip').innerText = `${closestLocation.city}, ${closestLocation.state} ${closestLocation.zip}`;
+        document.getElementById('tracking-number').innerText = closestLocation.trackingNumber;
+
+        JsBarcode("#barcode", closestLocation.trackingNumber, {
+            format: "CODE39",
+            width: 2,
+            height: 40,
+            displayValue: false
+        });
+
+        document.getElementById('shipping-label').style.display = 'block';
+        document.getElementById('print-label').style.display = 'inline';
+    }
+
+    document.getElementById('generate-label').addEventListener('click', generateLabel);
+    document.getElementById('print-label').addEventListener('click', () => {
+        window.print();
+    });
+</script>
+
+{% endblock %}

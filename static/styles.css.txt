@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="icon" href="{{ url_for('static', filename='campaign-image.jpg') }}" type="image/jpg">
+    <title>{% block title %}Pharma Drop NJ{% endblock %}</title>
+</head>
+<body>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav id="menu" class="hidden">
+        <a href="/" onclick="navigateTo(event, '/')">Home</a>
+        <a href="/about" onclick="navigateTo(event, '/about')">About</a>
+		<a href="/accepted_medicines" onclick="navigateTo(event, '/accepted_medicines')">Accepted Medicines </a>
+        <a href="/locations" onclick="navigateTo(event, '/locations')">Locations</a>
+		<a href="/ship_it" onclick="navigateTo(event, '/ship_it')">Ship It</a>
+        <a href="/articles" onclick="navigateTo(event, '/articles')">Articles</a>
+        <a href="/support" onclick="navigateTo(event, '/support')">Support</a>
+        <a href="/contact" onclick="navigateTo(event, '/contact')">Contact</a>
+    </nav>
+
+<div class="content">
+        {% block content %}
+        <div class="hero">
+            <a href="/about">
+                <img src="{{ url_for('static', filename='campaign-image.jpg') }}" alt="Campaign Image" class="campaign-image">
+            </a>
+        </div>
+        <div class="widgets">
+            <div class="widget" onclick="navigateTo(event, '/locations')">
+                <img src="{{ url_for('static', filename='locations.jpg') }}" alt="Find Location">
+               
+            </div>
+			<div class="widget" onclick="navigateTo(event, '/ship_it')">
+                <img src="{{ url_for('static', filename='ship_it.jpg') }}" alt="Ship It">
+          
+            </div>
+            <div class="widget" onclick="navigateTo(event, '/articles')">
+                <img src="{{ url_for('static', filename='articles.jpg') }}" alt="Articles">
+          
+            </div>
+			<div class="widget" onclick="navigateTo(event, '/accepted_medicines')">
+                <img src="{{ url_for('static', filename='accepted_medicines.jpg') }}" alt="accepted_medicines">
+            </div>
+            <div class="widget" onclick="navigateTo(event, '/support')">
+                <img src="{{ url_for('static', filename='support.jpg') }}" alt="Support">
+            </div>
+            <div class="widget" onclick="navigateTo(event, '/contact')">
+                <img src="{{ url_for('static', filename='contact.jpg') }}" alt="Contact Us">
+  
+            </div>
+
+
+        </div>
+	<footer>
+    <div class="footer-content">
+        <p>
+            <a href="https://www.facebook.com/YourPage" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 82px; height: 82px; margin-right: 50px;" class="thumbnail large-thumbnail"> 
+            </a> |
+			<a></a>
+            <a href="https://www.instagram.com/YourPage" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 82px; height: 82px;" class="thumbnail large-thumbnail"> 
+            </a>
+        </p>
+    </div>
+</footer>
+        {% endblock %}
+    </div>
+
+
+    <script>
+        let menuOpen = false; // Track if the menu is open
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const content = document.querySelector('.content');
+
+            if (menuOpen) {
+                menu.classList.add('hidden');
+                content.classList.add('shift'); // Move content back
+            } else {
+                menu.classList.remove('hidden');
+                content.classList.remove('shift'); // Shift content to the right
+            }
+
+            menuOpen = !menuOpen; // Toggle the menu state
+        }
+
+        function navigateTo(event, url) {
+  const menu = document.getElementById('menu');
+            const content = document.querySelector('.content');
+            event.preventDefault(); // Prevent default anchor behavior
+
+            // Wait for the animation to complete before navigating
+            setTimeout(() => {
+                window.location.href = url; // Navigate to the new URL
+            }, 300); // Allow time for animation to finish
+        }
+
+        // Ensure the menu is hidden on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.getElementById('menu');
+            const content = document.querySelector('.content');
+
+            menu.classList.remove('hidden'); // Ensure the menu is hidden
+            content.classList.remove('shift'); // Ensure content is in the original position
+            menuOpen = !menuOpen;
+        });
+		
+		
+    </script>
+	  
+</body>
+</html>

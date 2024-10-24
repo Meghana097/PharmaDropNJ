@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<h1>Contact Us</h1>
+
+<div class="contact-section">
+    <p>If you have any questions, feedback, or need assistance, please reach out to us using the form below or through the provided contact information.</p>
+
+    <h3>Contact Information</h3>
+    <p>Email: <a href="mailto:support@medicaldisposalapp.com">support@medicaldisposalapp.com</a></p>
+ 
+    
+    <h3>Get in Touch</h3>
+    <form action="YOUR_FORM_HANDLER" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+{% endblock %}

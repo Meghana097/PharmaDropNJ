@@ -1,0 +1,208 @@
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hamburger {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Ensure it is on top */
+}
+
+nav {
+    position: fixed;
+    left: 0;
+    width: 200px; /* Adjust width as needed */
+    height: 100%;
+    background-color: #284f99; /* Background color for the menu */
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%); /* Hide menu off-screen */
+}
+
+nav.hidden {
+    transform: translateX(0); /* Show menu */
+    top: 50px;
+}
+
+nav a {
+    color: white;
+    padding: 17px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold; /* This makes the text bold */
+    font-size: 19px;
+}
+
+nav a:hover {
+    background-color: #4db8b1; /* Darker on hover */
+}
+
+.content {
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+    margin-left: 50px; /* No margin by default */
+}
+
+.content.shift {
+    margin-left: 200px; /* Shift content to the right when menu is open */
+}
+
+.hero {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.campaign-image {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.widget-container {
+    display: flex; /* Use flexbox to arrange items in a row */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    border: 1px solid #ccc; /* Border for the widget container */
+    padding: 10px; /* Padding for the container */
+    white-space: nowrap; /* Prevent line breaks within widgets */
+}
+
+.widgets {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    #justify-content: space-between; /* Space out the widgets */
+}
+
+.widget {
+    flex: 1 1 25%; /* Grow to take up space; allow wrapping */
+    margin: 5px; /* Add margin between widgets */
+    max-width: 25%; /* Max width to ensure three in a row */
+}
+
+@media (max-width: 768px) { /* Adjust layout for smaller screens */
+    .widget {
+        max-width: 45%; /* Two in a row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) { /* Adjust layout for very small screens */
+    .widget {
+        max-width: 100%; /* One in a row on very small screens */
+    }
+}
+
+.widget:hover {
+    background-color: transparent; /* Change background on hover */
+}
+
+.campaign-image {
+    width: 25%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 500px; 
+    display: block; /* Remove bottom space under image */
+    border-radius: 8px; /* Optional: round corners */
+}
+
+.article-widgets {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 20px; /* Space between articles */
+}
+
+.large-thumbnail {
+    width: 100%; /* Adjust width for larger image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.thumbnail {
+    width: 50px; /* Adjust width for other images */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+.article-widget {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 200px; /* Adjust the width as needed */
+    text-align: center;
+}
+
+.article-widget img.thumbnail {
+    width: 20%;
+    height: auto;
+}
+
+.article-widget h3 {
+    margin: 10px 0;
+}
+
+.article-widget p {
+    padding: 0 10px 10px;
+}
+
+.support-section form {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.support-section form input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: calc(100% - 22px); /* Adjust width to account for padding */
+}
+
+.support-section form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.support-section form button:hover {
+    background-color: #45a049;
+}
+
+.contact-section {
+    margin: 20px 0;
+}
+
+.contact-section form {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.contact-section form input,
+.contact-section form textarea {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: calc(100% - 22px); /* Adjust width to account for padding */
+}
+
+.contact-section form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-section form button:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+			font-size: 20px;
+        }
+    </style>
+</head>
+
+<div class="hero">
+    <img src="{{ url_for('static', filename='campaign-image.jpg') }}" alt="Campaign Image" class="campaign-image">
+</div>
+
+<h1>About PharmaDrop</h1>
+<h2>Your Partner in Safe Medicine Disposal</h2>
+<p>In our contemporary world in which medicines have been used and prescribed at an ever-increasing rate, adverse impacts on the environment, economy, and human health have emerged due to irresponsible medicine disposal practices. Ensuring the safe disposal of unused or expired medications is more important now than ever in preventing associated issues such as intentional and accidental consumption of pharmaceuticals, drug abuse and theft, accumulation of medicine residues in aquatic habitats, antibiotic resistance, and more.</p>
+
+<p>The PharmaDrop Medicine Disposal App was created to provide a convenient way to enable proper disposal of medications safely and securely, aligning with the New Jersey Division of Consumer Affairs’ “Project Medicine Drop” initiative, which promotes New Jersey consumers to dispose of medications anonymously 365 days a year at designated prescription drug drop boxes located throughout the state.</p>
+
+<h3>Why Medicine Disposal Matters</h3>
+<p>Improper disposal of medications can lead to substantial environmental and health risks. Flushing drugs down the toilet or throwing them in the trash can contaminate water supplies and pose risks to aquatic ecosystems, as well as exacerbate the antibiotic resistance crisis which is projected to lead to over 39 million deaths by 2050 [1]. Additionally, keeping unused medications at home increases the risk of accidental ingestion, misuse, or abuse, especially among children and other vulnerable individuals. It is reported by NJ’s Project Medicine Drop that 70% of opioid abuse starts with easy access to unused pills [2]. Therefore, appropriate disposal of medicines is crucial in mitigating these threats to public health and the environment.</p>
+
+<h3>PharmaDrop’s Mission</h3>
+<p>PharmaDrop’s mission is to promote safe, responsible medicine disposal through education, awareness, and accessibility, facilitating easy medicine disposal. It aims to align with New Jersey’s “Project Medicine Drop” initiative and empower users with the tools, information, and convenience needed to dispose of their medications properly, ensuring a healthier environment for all, and to serve as an agent of public health and environmental change.</p>
+
+<h3>Features of Our App</h3>
+<ul>
+    <li><strong>Drop-off Locations:</strong> Easily locate nearby drop-off sites for medication disposal. Our app provides an interactive map to help you find locations nearest to you.</li>
+    <li><strong>Accepted Medicines Guidelines:</strong> Check guidelines to ensure that your medicines are acceptable for disposal.</li>
+    <li><strong>Scheduled Pickups:</strong> For those who cannot travel to a drop-off site, PharmaDrop offers a convenient scheduled pickup service for safe collection and disposal of medications.</li>
+    <li><strong>Education & Resources:</strong> Access vital information and resources including articles on why medicine disposal is important, news regarding medicine disposal, tips for safe disposal, and guidelines for handling medications.</li>
+</ul>
+
+<h3>Join Us in Making a Difference</h3>
+<p>By choosing to use our app, you join PharmaDrop and Project Medicine Drop’s mission to advance environmental and human health, and tackle drug abuse, theft, and irresponsible disposal of medicines. Together, we can ensure that medications are disposed of responsibly and take a stand against this crisis to safeguard our environment and community, preventing harm and promoting safety for all.</p>
+
+<p>[1] Naghavi, M., Vollset, S. E., Ikuta,. . . Murray, C. J. L. (2024). Global burden of bacterial antimicrobial resistance 1990–2021: a systematic analysis with forecasts to 2050. The Lancet. https://doi.org/10.1016/s0140-6736(24)01867-1</p>
+
+<p>[2] NJ Consumer Affairs. (2018, October 2). Project Medicine Drop. https://www.njconsumeraffairs.gov/meddrop/Pages/Media.aspx</p>
+
+{% endblock %}
